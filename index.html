@@ -1,0 +1,184 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Custom</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            
+         <style>
+              html,
+              body {
+                  margin: 0;
+                  padding: 0;
+                  width: 400px;
+                  margin: 0 auto;
+              }
+
+              .flex {
+                  display: flex;
+              }
+
+              .spaceBetween {
+                  justify-content: space-between;
+              }
+
+              /* for select bropdown */
+
+              .texts,
+              .options,
+              .inputBadgeCont,
+              .removeSearch {
+                  cursor: pointer;
+              }
+
+              .options {
+                  display: block;
+              }
+
+              .options.selected {
+                  background-color: darkgray;
+                  color: crimson;
+              }
+
+              .dropdownsSelect span {
+                  border-bottom: solid 1px #e0e0e0;
+              }
+
+              .dropdownsSelect span:hover {
+                  background-color: #eff3ff;
+              }
+
+              .dropdownsSelect span:last-child {
+                  margin-bottom: 0;
+              }
+
+              .dropdownsSelect.selectOpen {
+                  height: 294px;
+                  overflow: scroll;
+                  /* border: 1px solid #e0d9d9; */
+              }
+              .selectOpen::-webkit-scrollbar-thumb {
+                  background: #888; 
+              }
+
+              .dropdownsSelect {
+                  height: 0;
+                  overflow: hidden;
+                  transition: 0.3s;
+                  background-color: #ffff;
+                  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+                  position: absolute;
+                  width: 100%;
+                  top: 52px;
+                  z-index: 99;
+              }
+
+              .itemCenter {
+                  align-items: center;
+              }
+
+              .input-default {
+                  padding-left: 14px;
+              }
+
+              .aeroIcon {
+                  transition: 0.4s;
+              }
+
+              .aeroIcon img {
+                  width: 18px;
+                  height: 10px;
+              }
+
+              .aeroIcon.rotate {
+                  transform: rotate(-180deg);
+              }
+
+              .inputBadgeCont,
+              .options {
+                  padding: 13px 14px;
+              }
+
+              .inputBadgeCont {
+                  border: solid 1px #e0e0e0;
+              }
+
+              .selectCont {
+                  margin: 40px 0px;
+                  position: relative;
+              }
+
+              .main_cont select {
+                  width: 100%;
+                  height: 52px;
+                  background-color: unset;
+                  outline: none;
+              }
+         </style>
+    </head>
+
+    <body>
+        <div class="selectCont">
+            <div class="inputBadgeCont itemCenter flex spaceBetween">
+                <span class="texts">
+                    Seclect your options
+                </span>
+                <span class="aeroIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7">
+                        <path fill="#666" fill-rule="evenodd" d="M12 1.126L10.85 0 6 4.747 1.15 0 0 1.126l6 5.873z"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="dropdownsSelect">
+                <span class="options">Option_1</span>
+                <span class="options">Option_2</span>
+                <span class="options">Option_3</span>
+                <span class="options">Option_4</span>
+                <span class="options">Option_5</span>
+                <span class="options">Option_6</span>
+                <span class="options">Option_7</span>
+                <span class="options">Option_8</span>
+                <span class="options">Option_9</span>
+                <span class="options">Option_10</span>
+                <span class="options">Option_11</span>
+                <span class="options">Option_12</span>
+            </div>
+        </div>
+        
+        
+        
+        
+        <script>
+              window.onload = function () {
+
+                // onclick open the selectBox dropdown
+                document.querySelector(".inputBadgeCont").addEventListener("click", function () {
+                    document.querySelector(".dropdownsSelect").classList.toggle("selectOpen");
+                    document.querySelector(".aeroIcon").classList.toggle("rotate");
+                });
+                // onclick open the selectBox dropdown (End)
+
+
+                // For custom selectBox, trying to get the options and inner text
+                document.querySelectorAll('.options').forEach(function (targeting) {
+                    targeting.addEventListener("click", function () {
+                        var selected = document.querySelector(".selected");
+                        if (selected) {
+                            selected.classList.remove("selected");
+                        }
+                        this.classList.add("selected");
+                        document.querySelector(".texts").innerText = this.innerText;
+                        document.querySelector(".dropdownsSelect").classList.remove("selectOpen");
+                        document.querySelector(".aeroIcon").classList.remove("rotate");
+                    });
+                });
+                // For custom selectBox, trying to get the options and inner text (End)
+            }
+        </script>
+    </body>
+
+    </html>
